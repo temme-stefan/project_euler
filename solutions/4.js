@@ -13,17 +13,23 @@ const isPalindrom = n => {
 }
 
 const digits = 3;
-let result;
+let result = 0;
 
 let start = (Math.pow(10, digits) - 1);
-
-outer: for (let i = start; i > Math.pow(10, digits - 1); i--) {
-    for (let j = i; j > Math.pow(10, digits - 1); j--) {
-        if (isPalindrom(i * j)) {
-            result = i * j;
-            console.log(i, j)
-            break outer;
+let end = Math.pow(10, digits - 1);
+for (let i = start; i >= end; i--) {
+    for (let j = i; j >= end; j--) {
+        const p= i*j;
+        if (isPalindrom(p)) {
+            result = Math.max(p,result);
+            break
         }
+        if (p<result){
+            break;
+        }
+    }
+    if (i*i<result){
+        break;
     }
 }
 
