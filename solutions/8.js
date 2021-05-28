@@ -1,3 +1,4 @@
+import {getMaxPartialProdukt} from "../reusable/dynamics.js";
 
 console.log('Largest product in a series\n');
 console.log(`The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.
@@ -48,23 +49,7 @@ const field = [7,3,1,6,7,1,7,6,5,3,1,3,3,0,6,2,4,9,1,9,2,2,5,1,1,9,6,7,4,4,2,6,5
     0,5,8,8,6,1,1,6,4,6,7,1,0,9,4,0,5,0,7,7,5,4,1,0,0,2,2,5,6,9,8,3,1,5,5,2,0,0,0,5,5,9,3,5,7,2,9,7,2,5,
     7,1,6,3,6,2,6,9,5,6,1,8,8,2,6,7,0,4,2,8,2,5,2,4,8,3,6,0,0,8,2,3,2,5,7,5,3,0,4,2,0,7,5,2,9,6,3,4,5,0];
 
-const n=13;
-//Idee: Teilprodukte in Matrix speichern 1000xn, rekursiv bei linear walk füllen., gleichzeitig max aktualisieren...
-const partialProdukts=field.map(x=>Array.from({length:n},(_,i)=>i==0?x:null));
-
-const getProdukt = (from,steps)=>{
-    if (partialProdukts[from][steps-1]==null){
-        partialProdukts[from][steps-1] = getProdukt(from-1,steps-1) * getProdukt(from,1);
-    }
-    return partialProdukts[from][steps-1];
-}
-
-let max = 1;
-for (let i=n;i<field.length;i++){
-    max = Math.max(max,getProdukt(i,n));
-}
-
-const result=max;
+const result=getMaxPartialProdukt(field,13);
 
 
 console.log("Solution:", result);
