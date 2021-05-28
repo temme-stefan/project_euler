@@ -5,7 +5,7 @@
  */
 export function eratosthenes(n) {
     const deleted = Array.from({length: n}, _ => false); //Max Array Size 2^32... feels bad...
-    const upper = Math.floor(Math.sqrt((n)))
+    const upper = Math.ceil(Math.sqrt((n)))
     const primes = [];
     for (let i = 2; i <= upper; i++) {
         if (!deleted[i]) {
@@ -15,7 +15,7 @@ export function eratosthenes(n) {
             deleted[j] = true;
         }
     }
-    for (let i = upper + 1; i <= n; i++) {
+    for (let i = upper + 1; i < n; i++) {
         if (!deleted[i]) {
             primes.push(i);
         }
