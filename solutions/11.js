@@ -54,22 +54,22 @@ const field = [
 ];
 // @formatter:on
 
-//up == down, left == right, do i need counterdiagonal?
-const rows =[];
-field.forEach(row=>rows.push(row));
-field.map((_,i)=>field.map(x=>x[i])).forEach(col=>rows.push(col));
-for (let i=0;i<field.length;i++){
-    const diag = [],lowerdiag = [];
-    for (let j=0;j<field.length-i;j++) {
-        diag.push(field[i + j][j]);
-        lowerdiag.push(field[j][i+j]);
+//up == down, left == right,do i need counterdiagonal (yes)?
+const rows = [];
+field.forEach(row => rows.push(row)); //left/right
+field.map((_, i) => field.map(x => x[i])).forEach(col => rows.push(col)); //up/down
+for (let i = 0; i < field.length; i++) {
+    const diag = [[],[],[],[]];
+    for (let j = 0; j < field.length - i; j++) {
+        diag[0].push(field[i + j][j]); //diagonal
+        diag[1].push(field[j][i + j]);
+        diag[2].push(field[field.length-1-i-j][j]); //counterdiagonal
+        diag[3].push(field[field.length-1-j][i+j]);
     }
-    if (diag.length>3){
-        rows.push(diag,lowerdiag);
-    }
+    diag.filter(d=>d.length >3).forEach(d=>rows.push(d));
+
 }
 
-
-const result = rows.map(r=>getMaxPartialProdukt(rows, 4)).reduce((a,b)=>Math.max(a,b),0);
+const result = rows.map(r => getMaxPartialProdukt(r, 4)).reduce((a, b) => Math.max(a, b), 0);
 
 console.log("Solution:", result);
