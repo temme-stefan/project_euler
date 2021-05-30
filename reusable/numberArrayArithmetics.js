@@ -1,9 +1,9 @@
 export function addMany(...arrays) {
     let carry = 0;
     const sum = [];
-    const max = arrays.reduce((a,b)=>Math.max(a,b.length),0);
-    arrays.forEach(a=>{
-        for (let i = a.length;i<max;i++){
+    const max = arrays.reduce((a, b) => Math.max(a, b.length), 0);
+    arrays.forEach(a => {
+        for (let i = a.length; i < max; i++) {
             a.unshift(0);
         }
     });
