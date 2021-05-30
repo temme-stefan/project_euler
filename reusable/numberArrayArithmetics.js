@@ -1,3 +1,7 @@
+/**
+ * @param arrays {number[][]}
+ * @returns {number[]}
+ */
 export function addMany(...arrays) {
     let carry = 0;
     const sum = [];
@@ -22,3 +26,16 @@ export function addMany(...arrays) {
 }
 
 
+/**
+ *
+ * @param n {number}
+ * @returns {number[]}
+ */
+export function toNumberArray(n){
+    const result=[];
+    while (n>0){
+        result.unshift(n%10);
+        n=Math.floor(n/10);
+    }
+    return result;
+}
