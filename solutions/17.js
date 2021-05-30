@@ -57,7 +57,6 @@ let sum = 0;
 for (let i = 1; i <= to; i++) {
     let s = getThousand(i);
     s= s.split(/\W/).join('');
-    console.log(s);
     sum+=s.length;
 }
 
