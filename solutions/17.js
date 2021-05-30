@@ -4,8 +4,8 @@ If all the numbers from 1 to 1000 (one thousand) inclusive were written out in w
 NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20 letters. The use of "and" when writing out numbers is in compliance with British usage.`);
 console.log('https://projecteuler.net/problem=17\n');
 
-const firstdigit = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fiveteen", "sixteen", "seventeen", "eightteen", "nineteen"]
-const seconddigit = [, , "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+const firstdigit = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+const seconddigit = [, , "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
 
 const getTen = (n) => {
     let s = "";
@@ -14,9 +14,9 @@ const getTen = (n) => {
     } else {
         const sec = Math.floor(n / 10);
         const first = n % 10;
-        s = s + (seconddigit[sec] ?? "");
+        s = s + (seconddigit[sec] ?seconddigit[sec]+"-" : "");
         if (first > 0) {
-            s = s + firstdigit[first];
+            s = s +  firstdigit[first];
         }
     }
     return s;
@@ -57,6 +57,7 @@ let sum = 0;
 for (let i = 1; i <= to; i++) {
     let s = getThousand(i);
     s= s.split(/\W/).join('');
+    console.log(s);
     sum+=s.length;
 }
 
