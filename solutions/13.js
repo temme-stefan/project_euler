@@ -1,4 +1,6 @@
-﻿console.log('Large sum\n');
+﻿import {addMany} from "../reusable/numberArrayArithmetics.js";
+
+console.log('Large sum\n');
 console.log(`Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.`);
 console.log('https://projecteuler.net/problem=13\n');
 
@@ -103,20 +105,7 @@ const numbers=[[3,7,1,0,7,2,8,7,5,3,3,9,0,2,1,0,2,7,9,8,7,9,7,9,9,8,2,2,0,8,3,7,
 [2,0,8,4,9,6,0,3,9,8,0,1,3,4,0,0,1,7,2,3,9,3,0,6,7,1,6,6,6,8,2,3,5,5,5,2,4,5,2,5,2,8,0,4,6,0,9,7,2,2],
 [5,3,5,0,3,5,3,4,2,2,6,4,7,2,5,2,4,2,5,0,8,7,4,0,5,4,0,7,5,5,9,1,7,8,9,7,8,1,2,6,4,3,3,0,3,3,1,6,9,0]]
 
-let carry = 0;
-const sum = [];
-
-for (let i = numbers[0].length-1;i>=0;i--){
-    let s= numbers.reduce((a,n)=>a+n[i],0);
-    s+=carry%10;
-    carry = Math.floor(carry/10);
-    sum.unshift(s%10);
-    carry += Math.floor(s/10);
-}
-while (carry>0){
-    sum.unshift(carry%10);
-    carry = Math.floor(carry/10);
-}
+const sum = addMany(...numbers);
 
 const result = sum.filter((n,i)=>i<10).reduce((a,c)=>a*10+c,0);
 
