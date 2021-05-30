@@ -59,5 +59,5 @@ const t2 = [
 
 
 
-const result = getMaxPathInTriangle(t1);
+const result = getMaxPathInTriangle(t2);
 console.log(`Solution: ${result}`);
