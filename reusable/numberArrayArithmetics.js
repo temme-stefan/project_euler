@@ -17,6 +17,11 @@ export function addMany(...arrays) {
     return sum;
 }
 
+/**
+ *
+ * @param arr {number[]}
+ * @returns {number[]}
+ */
 function normalizeArrayNumber(arr) {
     let carry = 0;
     for (let i = arr.length - 1; i >= 0; i--) {
@@ -31,10 +36,22 @@ function normalizeArrayNumber(arr) {
     return arr;
 }
 
+/**
+ *
+ * @param arr1 {number[]}
+ * @param number {number}
+ * @returns {number[]}
+ */
 export function multiplySkalar(arr1, number) {
     return normalizeArrayNumber(arr1.map(x => x * number));
 }
 
+/**
+ *
+ * @param arr1 {number[]}
+ * @param arr2 {number[]}
+ * @returns {number[]}
+ */
 export function multiply(arr1, arr2) {
     if (arr2.length > arr1.length) {
         return multiply(arr2, arr1);
