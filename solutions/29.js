@@ -1,4 +1,5 @@
 import {factorization} from "../reusable/primes.js";
+import {sequence} from "../reusable/myMath.js";
 
 console.log("Distinct powers");
 console.log(`Consider all integer combinations of ab for 2 ≤ a ≤ 5 and 2 ≤ b ≤ 5:
@@ -26,8 +27,8 @@ for (let a = 2; a <= max_a; a++) {
         //there might be duplicates
         const base = fact.reduce((a, b) => a * b[0], 1);
         const basePower = fact[0][1];
-        const cand = Array.from({length: max_b - 1}, (_, i) => (i + 2) * basePower);
-        const test = Array.from({length: basePower - 1}, (_, i) => i + 1);
+        const cand = sequence(max_b - 1, 2 * basePower, basePower);
+        const test = sequence(basePower - 1, 1);
         const filtered = cand.filter(x => test.every(t => x > t * max_b || x % t != 0));
         termsCount += filtered.length;
     } else {

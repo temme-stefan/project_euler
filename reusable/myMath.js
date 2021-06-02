@@ -16,12 +16,31 @@ export function numberSortDescending(a,b){
 
 export const sumParams = [(a,b)=>a+b,0];
 
+/**
+ * @param {number[]}
+ * @returns {number}
+ */
 export function reduceSum(arr){
     return arr.reduce(...sumParams);
 }
 
 export const productParams = [(a,b)=>a*b,1];
 
+/**
+ * @param arr {number[]}
+ * @returns {number}
+ */
 export function reduceProduct(arr){
     return arr.reduce(...productParams);
+}
+
+/**
+ *
+ * @param length {number}
+ * @param start {number}
+ * @param step {number}
+ * @returns {number[]}
+ */
+export function sequence(length,start=0,step=1){
+    return Array.from({length},(_,i)=>start+i*step);
 }
