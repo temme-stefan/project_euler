@@ -13,3 +13,15 @@ export function numberSort(a,b){
 export function numberSortDescending(a,b){
     return -Math.sign(a-b);
 }
+
+export const sumParams = [(a,b)=>a+b,0];
+
+export function reduceSum(arr){
+    return arr.reduce(...sumParams);
+}
+
+export const productParams = [(a,b)=>a*b,1];
+
+export function reduceProduct(arr){
+    return arr.reduce(...productParams);
+}

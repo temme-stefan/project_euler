@@ -75,3 +75,8 @@ export function toNumberArray(n) {
     const result = normalizeArrayNumber([n]);
     return result;
 }
+
+export function toNumber(arr){
+    const result =arr.reduce((a,b)=>a*10+b,0);
+    return result;
+}

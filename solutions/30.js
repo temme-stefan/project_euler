@@ -1,4 +1,4 @@
-import {toNumberArray} from "../reusable/numberArrayArithmetics.js";
+import {toNumber, toNumberArray} from "../reusable/numberArrayArithmetics.js";
 import {numberSort} from "../reusable/myMath.js";
 
 console.log("Digit fifth powers");
@@ -15,40 +15,39 @@ Find the sum of all the numbers that can be written as the sum of fifth powers o
 console.log('https://projecteuler.net/problem=30\n');
 
 const power = 5;
-const numbers =[]
-const maxNumber = power * Math.pow(9,power);
+const numbers = []
+const maxNumber = power * Math.pow(9, power);
 
-const lookup=new Map();
+const lookup = new Map();
 
-const digitPowerSum = (n)=>{
-    let s=toNumberArray(n);
+const digitPowerSum = (n) => {
+    let s = toNumberArray(n);
     s.sort(numberSort);
-    let key = s.reduce((a,b)=>a*10+b,0);
-    if (!lookup.has(key)){
-        if (n<10){
-            lookup.set(key,Math.pow(n,power));
-        }
-        else{
-            const firstHalf=s.filter((x,i)=>i<s.length/2).reduce((a,b)=>a*10+b,0);
-            const secondHalf=s.filter((x,i)=>i>=s.length/2).reduce((a,b)=>a*10+b,0);
-            lookup.set(key,digitPowerSum(firstHalf)+digitPowerSum(secondHalf))
+    let key = toNumber(s);
+    if (!lookup.has(key)) {
+        if (n < 10) {
+            lookup.set(key, Math.pow(n, power));
+        } else {
+            const firstHalf = toNumber(s.filter((x, i) => i < s.length / 2));
+            const secondHalf = toNumber(s.filter((x, i) => i >= s.length / 2));
+            lookup.set(key, digitPowerSum(firstHalf) + digitPowerSum(secondHalf))
         }
     }
     return lookup.get(key);
 }
 
 
-const isDigitPower= (n)=>{
-  return digitPowerSum(n)==n;
+const isDigitPower = (n) => {
+    return digitPowerSum(n) == n;
 };
 
-for (let i=2;i<maxNumber;i++){
-    if (isDigitPower(i)){
+for (let i = 2; i < maxNumber; i++) {
+    if (isDigitPower(i)) {
         numbers.push(i);
     }
 }
 
 
-const result = numbers.reduce((a,b)=>a+b,0);
-console.log("Solution:", result,numbers);
+const result = numbers.reduce((a, b) => a + b, 0);
+console.log("Solution:", result, numbers);
 
