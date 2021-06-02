@@ -50,5 +50,5 @@ for (let i=2;i<maxNumber;i++){
 
 
 const result = numbers.reduce((a,b)=>a+b,0);
-console.log("Solution:", result);
+console.log("Solution:", result,numbers);
 
