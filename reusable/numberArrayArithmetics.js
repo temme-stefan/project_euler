@@ -76,7 +76,35 @@ export function toNumberArray(n) {
     return result;
 }
 
-export function toNumber(arr){
-    const result =arr.reduce((a,b)=>a*10+b,0);
+/**
+ *
+ * @param arr {number[]}
+ * @returns {{number}}
+ */
+export function toNumber(arr) {
+    const result = arr.reduce((a, b) => a * 10 + b, 0);
     return result;
+}
+
+/**
+ *
+ * @param a {number}
+ * @param b {number}
+ * @return {number}
+ */
+export function ggT(a, b) {
+    if (a == 0) {
+        return Math.abs(a);
+    }
+    if (b == 0) {
+        return Math.abs(b);
+    }
+    while (b != 0) {
+        const h = a % b;
+        a = b;
+        b = h;
+    }
+    return Math.abs(a);
+
+
 }
