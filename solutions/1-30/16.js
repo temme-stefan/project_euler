@@ -1,4 +1,4 @@
-import {addMany} from "../reusable/numberArrayArithmetics.js";
+import {addMany} from "../../reusable/numberArrayArithmetics.js";
 
 console.log('Power digit sum\n');
 console.log(`2^15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.

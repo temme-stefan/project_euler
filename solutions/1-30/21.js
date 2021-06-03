@@ -1,4 +1,4 @@
-import {getDividers} from "../reusable/primes.js";
+import {getDividers} from "../../reusable/primes.js";
 
 console.log("Amicable numbers");
 console.log(`Let d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n).

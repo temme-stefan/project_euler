@@ -1,4 +1,4 @@
-import {addMany, toNumberArray} from "../reusable/numberArrayArithmetics.js";
+import {addMany, toNumberArray} from "../../reusable/numberArrayArithmetics.js";
 
 console.log("1000-digit Fibonacci number");
 console.log(`The Fibonacci sequence is defined by the recurrence relation:

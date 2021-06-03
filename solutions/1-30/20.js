@@ -1,4 +1,4 @@
-import {multiplySkalar, toNumberArray} from "../reusable/numberArrayArithmetics.js";
+import {multiplySkalar, toNumberArray} from "../../reusable/numberArrayArithmetics.js";
 
 console.log("Factorial digit sum");
 console.log(`n! means n × (n − 1) × ... × 3 × 2 × 1

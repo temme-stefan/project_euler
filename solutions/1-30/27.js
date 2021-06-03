@@ -1,4 +1,4 @@
-import {eratosthenes} from "../reusable/primes.js";
+import {eratosthenes} from "../../reusable/primes.js";
 
 console.log("Quadratic primes");
 console.log(`to much formulars, see link`);

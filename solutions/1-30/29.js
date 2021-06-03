@@ -1,5 +1,5 @@
-import {factorization} from "../reusable/primes.js";
-import {sequence} from "../reusable/myMath.js";
+import {factorization} from "../../reusable/primes.js";
+import {sequence} from "../../reusable/myMath.js";
 
 console.log("Distinct powers");
 console.log(`Consider all integer combinations of ab for 2 ≤ a ≤ 5 and 2 ≤ b ≤ 5:

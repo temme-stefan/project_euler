@@ -1,4 +1,4 @@
-﻿import {eratosthenes} from "../reusable/primes.js";
+﻿import {eratosthenes} from "../../reusable/primes.js";
 
 console.log('Summation of primes\n');
 console.log(`The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.

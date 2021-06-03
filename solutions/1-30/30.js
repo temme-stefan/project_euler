@@ -1,5 +1,5 @@
-import {toNumber, toNumberArray} from "../reusable/numberArrayArithmetics.js";
-import {numberSort, reduceSum} from "../reusable/myMath.js";
+import {toNumber, toNumberArray} from "../../reusable/numberArrayArithmetics.js";
+import {numberSort, reduceSum} from "../../reusable/myMath.js";
 
 console.log("Digit fifth powers");
 console.log(`Surprisingly there are only three numbers that can be written as the sum of fourth powers of their digits:

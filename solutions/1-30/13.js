@@ -1,4 +1,4 @@
-﻿import {addMany} from "../reusable/numberArrayArithmetics.js";
+﻿import {addMany} from "../../reusable/numberArrayArithmetics.js";
 
 console.log('Large sum\n');
 console.log(`Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.`);
