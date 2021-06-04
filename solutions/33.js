@@ -1,4 +1,4 @@
-import {sequence, sumParams} from "../reusable/myMath.js";
+import {sequence} from "../reusable/myMath.js";
 import {ggT, toNumber, toNumberArray} from "../reusable/numberArrayArithmetics.js";
 
 console.log("Digit cancelling fractions");
