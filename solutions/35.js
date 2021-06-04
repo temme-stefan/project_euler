@@ -1,5 +1,4 @@
-import {factorial, sequence, sumParams} from "../reusable/myMath.js";
-import {ggT, toNumber, toNumberArray} from "../reusable/numberArrayArithmetics.js";
+import {toNumber, toNumberArray} from "../reusable/numberArrayArithmetics.js";
 import {eratosthenes} from "../reusable/primes.js";
 
 console.log("Circular primes");

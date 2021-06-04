@@ -1,5 +1,5 @@
 import {factorial, sequence, sumParams} from "../reusable/myMath.js";
-import {ggT, toNumber, toNumberArray} from "../reusable/numberArrayArithmetics.js";
+import {toNumberArray} from "../reusable/numberArrayArithmetics.js";
 
 console.log("Digit factorials");
 console.log(`145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
