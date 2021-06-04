@@ -1,3 +1,8 @@
+import {getWordScore} from "../../../reusable/strings.js";
+import {sumParams} from "../../../reusable/myMath.js";
+
+
+
 import fs from 'fs';
 import readline from 'readline';
 import { fileURLToPath } from 'url';
@@ -17,9 +22,8 @@ console.log('https://projecteuler.net/problem=22\n');
 const data = fs.readFileSync(__dirname+"/p022_names.txt",'utf8').split(',').map(x=>x.substr(1,x.length-2));
 data.sort();
 // data[937] == COLIN => orderscore= index+1
-const getWordScore = (s)=>s.split('').map(c=>c.charCodeAt()-"A".charCodeAt()+1).reduce((a,b)=>a+b,0);
 
-const result = data.map((x,i)=>(i+1)*getWordScore(x)).reduce((a,b)=>a+b,0);
+const result = data.map((x,i)=>(i+1)*getWordScore(x)).reduce(...sumParams);
 
 console.log("Solution:",result);
 
