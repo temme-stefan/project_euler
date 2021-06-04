@@ -1,3 +1,6 @@
+import {getWordScore} from "../../../reusable/strings.js";
+
+
 import fs from 'fs';
 import readline from 'readline';
 import { fileURLToPath } from 'url';
@@ -18,6 +21,18 @@ console.log("https://projecteuler.net/problem=42");
 
 const data = fs.readFileSync(__dirname+"/p042_words.txt",'utf8').split(',').map(x=>x.substr(1,x.length-2));
 
+const triangleNumbers=new Set();
+let maxTriangle=0;
+let next=0;
+const isTriangleNumber = (n)=>{
+    while (maxTriangle<n){
+        const t = next*(next+1)/2;
+        next++;
+        maxTriangle=t;
+        triangleNumbers.add(t);
+    }
+    return triangleNumbers.has(n);
+}
 
-const result = null;
+const result = data.map(s=>getWordScore(s)).filter(n=>isTriangleNumber(n)).length;
 console.log("Solution: ",result);
