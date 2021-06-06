@@ -9,6 +9,7 @@ Find the pair of pentagonal numbers, Pj and Pk, for which their sum and differen
 console.log("https://projecteuler.net/problem=44");
 
 const pentagonalNumbers = [0, 1, 5, 12, 22, 35, 51, 70, 92, 117, 145];
+const pentagonalNumbersSet = new Set(pentagonalNumbers);
 let maxPent = pentagonalNumbers[pentagonalNumbers.length - 1];
 let nextPentInd = pentagonalNumbers.length;
 
@@ -16,9 +17,10 @@ const isPent = (n) => {
     while (n > maxPent) {
         maxPent = nextPentInd * (3 * nextPentInd - 1) / 2;
         pentagonalNumbers.push(maxPent);
+        pentagonalNumbersSet.add(maxPent);
         nextPentInd++;
     }
-    return pentagonalNumbers.includes(n);
+    return pentagonalNumbersSet.has(n);
 }
 
 let result = null;
