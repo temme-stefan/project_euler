@@ -10,34 +10,18 @@ What 12-digit number do you form by concatenating the three terms in this sequen
 console.log("https://projecteuler.net/problem=49");
 
 const primes = eratosthenes(10000).filter(x => x >= 1000);
-const deltaMap = new Map();
+const primesSet=new Set(primes);
+const setsOfThree = [];
 
 for (let i = 0; i < primes.length; i++) {
     for (let j = i + 1; j < primes.length; j++) {
         const delta = primes[j] - primes[i];
-        if (!deltaMap.has(delta)) {
-            deltaMap.set(delta, [new Set([primes[i], primes[j]])]);
-        } else {
-            const a = deltaMap.get(delta);
-            let hadMatch = false;
-            for (let k = 0; k < a.length; k++) {
-                const s = a[k];
-                hadMatch = s.has(primes[i]) || s.has(primes[j]);
-                if (s.has(primes[i])) {
-                    s.add(primes[j]);
-                }
-                if (s.has(primes[j])) {
-                    s.add(primes[i]);
-                }
-            }
-            if (!hadMatch){
-                a.push(new Set([primes[i], primes[j]]));
-            }
+        if (primesSet.has(primes[j]+delta)){
+            setsOfThree.push(new Set([primes[i],primes[j],primes[j]+delta]));
         }
     }
 }
 
-const setsOfThree = [...deltaMap].map(([delta, arrs]) => arrs.filter(set => set.size == 3)).flat();
 
 const possibles = setsOfThree.filter(s => {
     const numberArrays = [...s].map(n => toNumberArray(n));
