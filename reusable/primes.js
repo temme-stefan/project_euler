@@ -31,13 +31,13 @@ export function eratosthenes(n) {
     return primes;
 }
 
-let primeSet=new Set();
-let upTo=0;
+let primeSet = new Set();
+let upTo = 0;
 
 export function isPrime(n) {
-    if (n>upTo){
-        upTo=Math.pow(10,Math.max(4, Math.floor(Math.log10(n))+1));
-        primeSet= new Set( eratosthenes(upTo));
+    if (n > upTo) {
+        upTo = Math.pow(10, Math.max(4, Math.floor(Math.log10(n)) + 1));
+        primeSet = new Set(eratosthenes(upTo));
     }
     return primeSet.has(n);
 }
@@ -68,6 +68,39 @@ export function factorization(n) {
         oldLength = primes.length;
     }
     return result;
+}
+
+const factmemo = new Map()
+
+/**
+ * Use this if you run many factorizations.
+ * @param n {number}
+ * @param primes {number[]}
+ * @returns {[number,number][]}
+ */
+export function factorizationWithMemory(n, primes) {
+    if (!factmemo.has(n)) {
+        let cur = n;
+        for (let i = 0; i < primes.length && cur > 1; i++) {
+            if (cur % primes[i] == 0) {
+                let count = 0;
+                while (cur % primes[i] == 0) {
+                    cur /= primes[i];
+                    count++;
+                }
+                if (cur == 1) {
+                    factmemo.set(n, [[primes[i], count]]);
+                } else {
+                    const others = factorizationWithMemory(cur, primes);
+                    cur = 1;
+                    const ind = others.findIndex(([prime, count]) => prime > primes[i]);
+                    factmemo.set(n, others.slice(0, ind).concat([[primes[i], count]], others.slice(ind)));
+                }
+            }
+        }
+
+    }
+    return factmemo.get(n);
 }
 
 /**

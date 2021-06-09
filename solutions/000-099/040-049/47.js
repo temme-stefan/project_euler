@@ -1,4 +1,4 @@
-import {factorization} from "../../../reusable/primes.js";
+import {eratosthenes, factorization, factorizationWithMemory} from "../../../reusable/primes.js";
 import {sequence} from "../../../reusable/myMath.js";
 
 console.log("Distinct primes factors");
@@ -15,18 +15,33 @@ The first three consecutive numbers to have three distinct prime factors are:
 
 Find the first four consecutive integers to have four distinct prime factors each. What is the first of these numbers?`);
 console.log("https://projecteuler.net/problem=47");
-const facts=[[],[]];
 const distinctFacts=4;
 const offsets = sequence(distinctFacts);
-let found = false;
+const starts= sequence(distinctFacts,-3)
+let found = 0;
 let i=2;
-while (!found){
-    facts[i]=factorization(i);
-    if (offsets.every(x=>distinctFacts == facts[i-x].length)){
-        found=true;
+let step = 3;
+let max = 0;
+let primes = [];
+const updatePrimes = ()=> {
+    step++;
+    max = Math.pow(10, step);
+    primes = eratosthenes(max);
+}
+while (found == 0){
+    if (i>max){
+        updatePrimes();
     }
-    i++;
+    const facts=factorizationWithMemory(i,primes);
+    if (facts.length == distinctFacts){
+            const startIndex = starts.findIndex(j=>offsets.every(k=>factorizationWithMemory(i+j+k,primes).length==distinctFacts));
+            if (startIndex>=0){
+                found=i+starts[startIndex];
+            }
+    }
+
+    i+=distinctFacts;
 }
 
-const result = facts.length-distinctFacts;
+const result = found;
 console.log("Solution: ",result);
