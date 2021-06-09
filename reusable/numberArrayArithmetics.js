@@ -56,7 +56,7 @@ export function multiply(arr1, arr2) {
     if (arr2.length > arr1.length) {
         return multiply(arr2, arr1);
     }
-    return addMany(arr2.reverse().map((x, i) => {
+    return addMany(...arr2.reverse().map((x, i) => {
         const s = multiplySkalar(arr1, x);
         for (let j = 0; j < i; j++) {
             s.push(0);
