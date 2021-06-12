@@ -44,3 +44,26 @@ export function reduceProduct(arr){
 export function sequence(length,start=0,step=1){
     return Array.from({length},(_,i)=>start+i*step);
 }
+
+/**
+ *
+ * @param a {number}
+ * @param b {number}
+ * @return {number}
+ */
+export function ggT(a, b) {
+    if (a == 0) {
+        return Math.abs(a);
+    }
+    if (b == 0) {
+        return Math.abs(b);
+    }
+    while (b != 0) {
+        const h = a % b;
+        a = b;
+        b = h;
+    }
+    return Math.abs(a);
+
+
+}

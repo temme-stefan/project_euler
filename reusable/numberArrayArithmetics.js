@@ -86,25 +86,3 @@ export function toNumber(arr) {
     return result;
 }
 
-/**
- *
- * @param a {number}
- * @param b {number}
- * @return {number}
- */
-export function ggT(a, b) {
-    if (a == 0) {
-        return Math.abs(a);
-    }
-    if (b == 0) {
-        return Math.abs(b);
-    }
-    while (b != 0) {
-        const h = a % b;
-        a = b;
-        b = h;
-    }
-    return Math.abs(a);
-
-
-}
