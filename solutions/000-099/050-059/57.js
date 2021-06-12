@@ -13,6 +13,6 @@ for (let i=1;i<= upper;i++){
 }
 const total = steps.map(x=>new Fraction(1).add(x));
 
-const result = total.filter(({numerator,denominator})=>Math.floor(Math.log10(numerator))>Math.floor(Math.log10(denominator))).length;
+const result = total.filter(({numerator,denominator})=>(""+numerator).length>(""+denominator).length).length;
 const end = performance.now();
 console.log(`Solution (${((end - start) / 1000).toFixed(4)}s): `, result);
