@@ -1,3 +1,6 @@
+import {addMany, toNumber, toNumberArray} from "../../../reusable/numberArrayArithmetics.js";
+import {isPalindrom} from "../../../reusable/strings.js";
+
 console.log("Lychrel numbers");
 console.log(`If we take 47, reverse and add, 47 + 74 = 121, which is palindromic.
 
@@ -19,8 +22,33 @@ NOTE: Wording was modified slightly on 24 April 2007 to emphasise the theoretica
 console.log("https://projecteuler.net/problem=55");
 const start = performance.now();
 
+const lychrelBound = 50;
+const upper = 1e4;
+const palindromical = Array.from({length: upper}, _ => false);
+palindromical[0] = true;
 
-
-const result = null;
+for (let i = 1; i < upper; i++) {
+    if (palindromical[i]) {
+        continue;
+    }
+    const steps = [toNumberArray(i)];
+    while (steps.length < lychrelBound) {
+        const last = steps[steps.length - 1];
+        const re = last.slice(0).reverse();
+        const next = addMany(last, re);
+        if (isPalindrom(next)) {
+            steps.filter(x => x.length < 5).forEach(x => {
+                palindromical[toNumber(x)] = true
+                if (x[x.length - 1] != 0) {
+                    palindromical[toNumber(x.reverse())] = true;
+                }
+            });
+            break;
+        } else {
+            steps.push(next);
+        }
+    }
+}
+const result = palindromical.filter(x => !x).length;
 const end = performance.now();
 console.log(`Solution (${((end - start) / 1000).toFixed(4)}s): `, result);
