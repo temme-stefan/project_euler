@@ -1,5 +1,6 @@
 import {sumParams} from "../../../reusable/myMath.js";
 import {toNumberArray} from "../../../reusable/numberArrayArithmetics.js";
+import {isPalindrom} from "../../../reusable/strings.js";
 
 console.log("Double-base palindromes");
 console.log(`The decimal number, 585 = 10010010012 (binary), is palindromic in both bases.
@@ -11,13 +12,6 @@ console.log('https://projecteuler.net/problem=36\n');
 
 const upper = 1e6;
 const doublePalindroms = []
-const isPalindrom = (a) => {
-    let is = true;
-    for (let i = 0; is && i < a.length / 2; i++) {
-        is = a[i] == a[a.length - 1 - i];
-    }
-    return is;
-}
 
 for (let i = 1; i < upper; i++) {
     const binary = i.toString(2);
