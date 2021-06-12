@@ -53,10 +53,10 @@ export function sequence(length,start=0,step=1){
  */
 export function ggT(a, b) {
     if (a == 0) {
-        return Math.abs(a);
+        return Math.abs(b);
     }
     if (b == 0) {
-        return Math.abs(b);
+        return Math.abs(a);
     }
     while (b != 0) {
         const h = a % b;
@@ -64,6 +64,13 @@ export function ggT(a, b) {
         b = h;
     }
     return Math.abs(a);
+}
 
-
+/**
+ * @param a {number}
+ * @param b {number}
+ * @returns {number}
+ */
+export function kgV(a,b){
+    return a*b/ggT(a,b);
 }
