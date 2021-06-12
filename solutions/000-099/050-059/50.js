@@ -11,21 +11,25 @@ The longest sum of consecutive primes below one-thousand that adds to a prime, c
 
 Which prime, below one-million, can be written as the sum of the most consecutive primes?`);
 console.log("https://projecteuler.net/problem=50");
-
+const start = performance.now();
 
 const max = 1e6;
 const memSplitter=100
 const primes = eratosthenes(max);
 const primeSet = new Set(primes);
-
 let maxLength=0;
 let primeWithMaxLength = 0;
+let offset = 0;
 let sums = [];
+
 primes.forEach(p=>{
     sums = sums.map(s=>s+p);
     sums.push(p);
-    let pInd = sums.findIndex(s=>s<max && primeSet.has(s));
-    let length = sums.length-pInd;
+    const remove = sums.findIndex(s=>s<max);
+    offset+=remove;
+    sums.splice(0,remove);
+    let pInd = sums.findIndex(s=>primeSet.has(s));
+    let length = sums.length-pInd-offset;
     if (length>maxLength){
         maxLength=length;
         primeWithMaxLength = sums[pInd];
@@ -33,10 +37,6 @@ primes.forEach(p=>{
 });
 console.log(maxLength,primeWithMaxLength);
 
-
-
-
-// console.log(sums);
-
 const result = primeWithMaxLength;
-console.log("Solution: ", result);
+const end = performance.now();
+console.log(`Solution (${((end-start)/1000).toFixed(4)}s): `, result);

@@ -32,11 +32,13 @@ stream.write(
     `console.log("Title");
 console.log(\`Description\`);
 console.log("https://projecteuler.net/problem=${problemNumber}");
+const start = performance.now();
 
 
 
 const result = null;
-console.log("Solution: ",result);
+const end = performance.now();
+console.log(\`Solution (\${((end - start) / 1000).toFixed(4)}s): \`, result);
 `
 );
 stream.end();
